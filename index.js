@@ -20,6 +20,7 @@ app.use(cors(
   }
 ));
 app.use(bodyParser.json());
+app.options('*', cors());
 
 // Routes
 app.use('/api', require('./routes/users'));
