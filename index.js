@@ -12,15 +12,17 @@ const app = express();
 connectDB();
 
 // Middleware
-app.use(cors(
-  {
-  origin: 'https://leaderboard-frontend-three.vercel.app', // Replace with your frontend's URL
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],  // Specify allowed HTTP methods
-  allowedHeaders: ['Content-Type', 'Authorization'],  // Specify allowed header
-  }
-));
-app.use(bodyParser.json());
+app.use(cors({
+  origin: 'https://leaderboard-frontend-three.vercel.app',  // Your frontend URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],      // Include OPTIONS for preflight requests
+  allowedHeaders: ['Content-Type', 'Authorization'],         // Include the required headers
+  credentials: true                                          // Enable if you're working with cookies
+}));
+
+// Enable preflight requests for all routes
 app.options('*', cors());
+app.use(bodyParser.json());
+// app.options('*', cors());
 
 // Routes
 app.use('/api', require('./routes/users'));
