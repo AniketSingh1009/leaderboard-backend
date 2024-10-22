@@ -14,9 +14,11 @@ connectDB();
 // Middleware
 app.use(cors(
   {
-    origin:["https://leaderboard-frontend-iontmoh2q-kumarniket924-gmailcoms-projects.vercel.app"],
-    method:["POST", "GET"],
-    credentials:true
+    app.use(cors({
+  origin: 'https://leaderboard-frontend-iontmoh2q-kumarniket924-gmailcoms-projects.vercel.app', // Replace with your frontend's URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],  // Specify allowed HTTP methods
+  allowedHeaders: ['Content-Type', 'Authorization'],  // Specify allowed headers
+}));
   }
 ));
 app.use(bodyParser.json());
