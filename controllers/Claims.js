@@ -27,7 +27,7 @@ exports.claimPoints = async (req, res) => {
 
 exports.getClaimHistory = async (req, res) => {
   try {
-    const claims = await ClaimHistory.find().populate('userId');
+    const claims = await ClaimHistory.find().populate('userId','name');
     res.json(claims);
   } catch (error) {
     res.status(500).json({ message: error.message });
