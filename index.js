@@ -12,7 +12,13 @@ const app = express();
 connectDB();
 
 // Middleware
-app.use(cors());
+app.use(cors(
+  {
+    origin:["https://leaderboard-frontend-iontmoh2q-kumarniket924-gmailcoms-projects.vercel.app"],
+    method:["POST", "GET"],
+    credentials:true
+  }
+));
 app.use(bodyParser.json());
 
 // Routes
